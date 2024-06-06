@@ -8,7 +8,7 @@ It's an example of how to make a standalone React app that uses the [Big Sky Age
 
 Because the `@automattic/big-sky-agents` package is published [privately on Github](https://github.com/Automattic/big-sky-agents/pkgs/npm/big-sky-agents), you will need to perform the following steps before you can npm-install it in this project:
 
-1. Create a Github (Personal Access Token)[https://github.com/settings/tokens]. Be sure to select a "Classic" token, not a fine-grained one. Select "No Expiration" unless you want your dev environment to break by surprise in the future.
+1. Create a Github [Personal Access Token](https://github.com/settings/tokens). Be sure to select a "Classic" token, not a fine-grained one. Select "No Expiration" unless you want your dev environment to break by surprise in the future.
 
 2. Select at least the "read:packages" scope. If you want to use this token to publish the package, then also select the "write:packages" scope.
 
