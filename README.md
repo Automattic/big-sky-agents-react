@@ -41,10 +41,10 @@ To build the app:
 npm run build
 ```
 
-To set the default OPENAI_API_TOKEN, put this in `.env`:
+To set the default OpenAI API key, put this in `.env.local`. It is important to include the `REACT_APP_` prefix for the variable to be picked up by Create React App:
 
 ```bash
-OPENAI_API_TOKEN=sk-...
+REACT_APP_OPENAI_API_KEY=sk-...
 ```
 
 See the Create React App section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
