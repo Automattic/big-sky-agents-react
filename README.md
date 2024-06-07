@@ -41,7 +41,7 @@ To build the app:
 npm run build
 ```
 
-To set the default OpenAI API key, put this in `.env.local`. It is important to include the `REACT_APP_` prefix for the variable to be picked up by Create React App:
+To set the default OpenAI API key, put this in `.env`. It is important to include the `REACT_APP_` prefix for the variable to be picked up by Create React App:
 
 ```bash
 REACT_APP_OPENAI_API_KEY=sk-...
