@@ -14,7 +14,7 @@ import {
 } from "@automattic/big-sky-agents";
 import { useMemo, useState } from "react";
 
-const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
+const OPENAI_API_KEY =  process.env.REACT_APP_OPENAI_API_KEY;
 const TEMPERATURE = 0.2;
 const DEMO_AGENT_ID = "demo-agent";
 
