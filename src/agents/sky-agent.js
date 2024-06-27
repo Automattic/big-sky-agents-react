@@ -2,11 +2,13 @@ import { Agent, DotPromptTemplate } from '@automattic/big-sky-agents';
 
 const defaultQuestion = 'What questions do you have about the sky?';
 
-const defaultChoices = [
-	'Why is it blue?',
-	'Why is it so big?',
-	'Does it really rain cats and dogs?',
-];
+// const defaultChoices = [
+// 	'Why is it blue?',
+// 	'Why is it so big?',
+// 	'Does it really rain cats and dogs?',
+// ];
+
+const defaultChoices = [];
 
 const instructions = new DotPromptTemplate({
 	template: `You are an expert at answering questions about the sky in a humerous way.
@@ -47,7 +49,7 @@ class SkyAgent extends Agent {
 	}
 
 	onStart() {
-		this.setGoal('Answer any question the user has about the sky');
+		// this.setGoal('Answer any question the user has about the sky');
 		this.askUser({
 			question: defaultQuestion,
 			choices: defaultChoices,

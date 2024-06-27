@@ -1,49 +1,55 @@
 import {
-	AgentUI,
-	useAgentStarter,
-	useChat,
-	useChatExecutor,
-	useCurrentAgent,
-	useReduxToolkit,
-	useToolExecutor,
+  agents,
+  AgentUI,
+  SiteSpecPreview,
+  useAgentStarter,
+  useChat,
+  useChatExecutor,
+  useAgent,
+  useReduxToolkit,
+  useToolExecutor,
 } from '@automattic/big-sky-agents';
 import { useEffect } from 'react';
-import SkyAgent from '../agents/sky-agent';
 
 export default function AgentsDemo() {
-	const apiKey = process.env.REACT_APP_OPENAI_API_KEY;
-	const chat = useChat();
-	const toolkit = useReduxToolkit({
-		apiKey,
-	});
-	useEffect(() => {
-		if (chat.apiKey !== apiKey) {
-			chat.setApiKey(apiKey);
-		}
-	}, [apiKey, chat, toolkit]);
+  const apiKey = process.env.REACT_APP_OPENAI_API_KEY;
+  const chat = useChat();
+  const toolkit = useReduxToolkit({
+    apiKey,
+  });
 
-	const agent = useCurrentAgent({
-		toolkit,
-		chat,
-		newAgent: SkyAgent,
-	});
+  useEffect(() => {
+    if (chat.apiKey !== apiKey) {
+      chat.setApiKey(apiKey);
+    }
+  }, [apiKey, chat]);
 
-	// run the agent
-	useChatExecutor({
-		chat,
-		agent,
-		toolkit,
-	});
+  const agentConfig = agents.find((ag) => ag.id === 'WPSiteSpec');
+  toolkit.callbacks.setAgent(agentConfig);
 
-	useToolExecutor({
-		chat,
-		toolkit,
-	});
+  const agent = useAgent(agentConfig.id, {
+    toolkit,
+  });
 
-	useAgentStarter({
-		agent,
-		chat,
-	});
+  console.log('agent', agent);
 
-	return <AgentUI toolkit={toolkit} agent={agent} chat={chat} />;
+  useChatExecutor({
+    agent,
+    toolkit,
+  });
+
+  useToolExecutor({
+    toolkit,
+  });
+
+  useAgentStarter({
+    agent,
+  });
+
+  return (
+    <>
+      <AgentUI toolkit={toolkit} agent={agent} chat={chat} hideChoices={false} />
+      <SiteSpecPreview />
+    </>
+  );
 }
