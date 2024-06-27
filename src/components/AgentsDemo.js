@@ -1,5 +1,4 @@
 import {
-  agents,
   AgentUI,
   SiteSpecPreview,
   useAgentStarter,
@@ -24,14 +23,12 @@ export default function AgentsDemo() {
     }
   }, [apiKey, chat]);
 
-  const agentConfig = agents.find((ag) => ag.id === 'WPSiteSpec');
-  toolkit.callbacks.setAgent(agentConfig);
+  // const agentConfig = agents.find((ag) => ag.id === 'WPSiteSpec');
+  // toolkit.callbacks.setAgent(agentConfig);
 
-  const agent = useAgent(agentConfig.id, {
+  const agent = useAgent( 'WPSiteSpec', {
     toolkit,
   });
-
-  console.log('agent', agent);
 
   useChatExecutor({
     agent,
@@ -45,6 +42,8 @@ export default function AgentsDemo() {
   useAgentStarter({
     agent,
   });
+
+  // console.log('agent', agent);
 
   return (
     <>
