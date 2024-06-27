@@ -8,23 +8,26 @@ import {
 	useToolExecutor,
 } from '@automattic/big-sky-agents';
 import { useEffect } from 'react';
+import SkyAgent from '../agents/sky-agent';
 
 export default function AgentsDemo() {
 	const apiKey = process.env.REACT_APP_OPENAI_API_KEY;
 	const chat = useChat();
+	const toolkit = useReduxToolkit({
+		apiKey,
+	});
 	useEffect(() => {
 		if (chat.apiKey !== apiKey) {
 			chat.setApiKey(apiKey);
 		}
-	}, [apiKey, chat]);
-	const toolkit = useReduxToolkit({
-		apiKey,
-	});
+	}, [apiKey, chat, toolkit]);
 
 	const agent = useCurrentAgent({
 		toolkit,
 		chat,
+		newAgent: SkyAgent,
 	});
+
 	// run the agent
 	useChatExecutor({
 		chat,
