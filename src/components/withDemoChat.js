@@ -5,10 +5,10 @@ import {
 } from '@automattic/big-sky-agents';
 
 const withDemoChat = (ChildComponent) => {
-	const WithDemoChat = ({ apiKey, ...props }) => (
+	const WithDemoChat = ({ apiKey, feature, ...props }) => (
 		<ChatProvider
 			apiKey={apiKey}
-			feature="big-sky"
+			feature={feature}
 			service={ChatModelService.OPENAI}
 			model={ChatModelType.GPT_4O}
 		>

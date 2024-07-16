@@ -38,19 +38,34 @@ function App() {
 				{({ name }) => (
 					<div>
 						{name === 'minimal-demo' && (
-							<MinimalDemo apiKey={OPENAI_API_KEY} />
+							<MinimalDemo
+								apiKey={OPENAI_API_KEY}
+								feature="minimal-demo"
+							/>
 						)}
 						{name === 'minimal-demo-with-weather' && (
-							<MinimalDemoWithWeather apiKey={OPENAI_API_KEY} />
+							<MinimalDemoWithWeather
+								apiKey={OPENAI_API_KEY}
+								feature="minimal-demo-with-weather"
+							/>
 						)}
 						{name === 'ask-user-demo' && (
-							<AskUserDemo apiKey={OPENAI_API_KEY} />
+							<AskUserDemo
+								apiKey={OPENAI_API_KEY}
+								feature="ask-user-demo"
+							/>
 						)}
 						{name === 'weather-demo' && (
-							<WeatherDemo apiKey={OPENAI_API_KEY} />
+							<WeatherDemo
+								apiKey={OPENAI_API_KEY}
+								feature="weather-demo"
+							/>
 						)}
 						{name === 'site-spec' && (
-							<SiteSpecDemo apiKey={OPENAI_API_KEY} />
+							<SiteSpecDemo
+								apiKey={OPENAI_API_KEY}
+								feature="site-spec"
+							/>
 						)}
 					</div>
 				)}
