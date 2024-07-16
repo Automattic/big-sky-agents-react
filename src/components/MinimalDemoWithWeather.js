@@ -10,7 +10,6 @@ import {
 	useAgents,
 	useChat,
 	UserMessageInput,
-	useToolkit,
 } from '@automattic/big-sky-agents';
 import { useEffect } from 'react';
 
@@ -24,7 +23,6 @@ const MinimalDemoUI = () => {
 	const { setActiveAgent, activeAgent, setAgentStarted } = useAgents();
 
 	useAgent(MinimalAgent);
-	useToolkit(GetWeatherToolkit);
 
 	useEffect(() => {
 		if (activeAgent?.id !== MinimalAgent.id) {
@@ -84,7 +82,7 @@ const GetWeatherToolkit = {
 const MinimalAgent = {
 	id: 'tiny-with-weather',
 	name: 'Conversation Bot with weather',
-	toolkits: [GetWeatherToolkit.name],
+	toolkits: [GetWeatherToolkit],
 	instructions: (context) =>
 		`Will talk about anything but always brings the topic back to the early 1980s show Mork and Mindy. Reference specific quotes and episodes where possible. The current location is ${context.currentLocation}`,
 	onStart: (invoke) => {
