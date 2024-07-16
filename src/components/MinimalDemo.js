@@ -1,9 +1,5 @@
 /**
- * WordPress dependencies
- */
-
-/**
- * Internal dependencies
+ * External dependencies
  */
 import {
 	ChatHistory,
@@ -11,14 +7,26 @@ import {
 	PopUpControls,
 	useAgent,
 	useAgentExecutor,
+	useAgents,
 	useChat,
 	UserMessageInput,
 } from '@automattic/big-sky-agents';
+import { useEffect } from 'react';
+/**
+ * Internal dependencies
+ */
 import withDemoChat from './withDemoChat';
 
 const MinimalDemoUI = () => {
+	const { setActiveAgent, activeAgent, setAgentStarted } = useAgents();
 	useAgent(MinimalAgent);
 	useAgentExecutor();
+	useEffect(() => {
+		if (activeAgent?.id !== MinimalAgent.id) {
+			setAgentStarted(false);
+			setActiveAgent(MinimalAgent.id);
+		}
+	});
 	const { assistantMessage } = useChat();
 
 	return (
