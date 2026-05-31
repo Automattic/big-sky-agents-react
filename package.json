@@ -39,6 +39,9 @@
       "last 1 safari version"
     ]
   },
+  "overrides": {
+    "form-data": "3.0.4"
+  },
   "devDependencies": {
     "@babel/plugin-transform-react-jsx": "^7.24.7",
     "@babel/preset-env": "^7.24.7",
